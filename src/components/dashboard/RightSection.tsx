@@ -23,7 +23,7 @@ export default function RightSection(props){
         <Paper className={classes.root}  elevation={3}>
             <Datepicker
                 beforeDate={3} 
-                endDate={7} 
+                endDate={15} 
                 selectDate={""}
                 getSelectedDay={selectedDay} 
                 labelFormat={"MMMM yyyy"} 

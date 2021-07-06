@@ -250,7 +250,7 @@ export default function Datepicker({beforeDate, endDate, selectDate, getSelected
     const classes = useStyles();
     return (<div className={classes.root}>
             <Grid container spacing={2} className={classes.containerPad}>
-                <Grid item sm container className={classes.dateContaniner}>
+                <Grid item xs container className={classes.dateContaniner}>
                     <Grid item className={classes.date}>{new Date().getDate()}</Grid>
                     <Grid item>
                         <Grid>{format(new Date(), "E")}</Grid>
