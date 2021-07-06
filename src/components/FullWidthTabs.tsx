@@ -76,10 +76,10 @@ const GlobalCss = withStyles({
             padding: '5px'
         },
         '.MuiButton-root': {
-            padding: '2px',
+            padding: '5px',
             lineHeight: '1',
-            // borderRadius: '0px',
-            textTransform: 'capitalize'
+            textTransform: 'capitalize',
+            marginBottom: '8px'
         }
     }
 })(() => null);

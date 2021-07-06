@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
+import {Button as ButtonToday} from '@material-ui/core';
 import styled from 'styled-components';
 import {
     addDays,
@@ -12,31 +13,12 @@ import {
 } from "date-fns";
 import { ru } from 'date-fns/locale'
 import enUsLocale from "date-fns/locale/en-US";
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    date: {
-      fontSize: '60px',
-    },
-    containerPad: {
-        padding: '15px'
-    },
-    dateContaniner: {
-        display: 'flex',
-        alignItems: 'center'
-    }
-  }));
 
 const Container = styled.div`
     display: flex;
     width: 100%;
     background: inherit;
-    padding: 5px;
-    box-sizing: border-box;
 `
 
 const ButtonWrapper = styled.div`
@@ -50,9 +32,9 @@ const Button = styled.button`
     border: none;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 12%;
-    width: 20px;
-    height: 50px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -62,19 +44,6 @@ const Button = styled.button`
     justify-content: center;
     padding: 0;
     margin-bottom: 5px;
-`
-const ButtonToday = styled.button`
-    border-radius: 8px;
-    width: 70px;
-    height: 40px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    color: #57de57;
-    background-color: #dbf5dc;
-    border: none;
 `
 
 const DateListScrollable = styled.div`
@@ -96,38 +65,53 @@ const MonthContainer = styled.div`
         flex-direction: column;
     }
 `
+
+const MonthYearLabel = styled.div`
+    align-self: flex-start;
+    z-index: 3;
+    font-size: 15px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: max-content;
+    margin: 0 14px 10px 0;
+`
+
 const DateDayItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
     margin: 0 0 0 5px;
-    width: 28px;
-    height: 50px;
+    width: 45px;
+    height: 49px;
     flex-shrink: 0;
 `
+
 const DaysContainer = styled.div`
     display: flex;
     z-index: 1;
 `
 
 const DayLabel = styled.div`
-    font-size: 14px;
+    font-size: 3px;
     margin: 4px 0 0 0;
+    visibility: hidden;
 `
 
 const DateLabel = styled.div`
     font-size: 18px;
 `
 
-export default function Datepicker({beforeDate, endDate, selectDate, getSelectedDay, color, labelFormat, language}) {
+export default function DatePicker2({firstDate, endDate, selectDate, getSelectedDay, color, labelFormat, language}) {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const firstSection = {marginLeft: '40px'};
-    const current = new Date();
-    const startDate = addDays(current, -beforeDate);
+    const currentDate = new Date();
+    const startDate = currentDate.setDate(currentDate.getDate() - firstDate);
     const lastDate = addDays(startDate, endDate || 90);
     const primaryColor = color || 'rgb(54, 105, 238)';
-    const selectedStyle = {fontWeight:"bold",width:"25px",height:"50px",borderRadius:"12%",border:`2px solid ${primaryColor}`,color:primaryColor};
+    const selectedStyle = {fontWeight:"bold",width:"45px",height:"45px",borderRadius:"50%",border:`2px solid ${primaryColor}`,color:primaryColor};
     const buttonColor = {background: primaryColor};
     const labelColor= {color: primaryColor};
 
@@ -153,7 +137,6 @@ export default function Datepicker({beforeDate, endDate, selectDate, getSelected
         let days = [];
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
-            console.log(differenceInMonths(lastDate, startDate))
             const month = startOfMonth(addMonths(startDate, i));
             start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
             end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
@@ -163,7 +146,7 @@ export default function Datepicker({beforeDate, endDate, selectDate, getSelected
                          style={getStyles(addDays(month, j))}
                          key={addDays(month, j)}
                          onClick={() => onDateClick(addDays(month, j))}
-                         >
+                    >
                         <DayLabel>
                             {format(addDays(month, j), dayFormat)}
                         </DayLabel>
@@ -174,21 +157,19 @@ export default function Datepicker({beforeDate, endDate, selectDate, getSelected
                 );
             }
             months.push(
-                <div>
-                                       
-                    <MonthContainer key={month}>
-                        <DaysContainer style={i===0?firstSection:null}>
-                            {days}
-                        </DaysContainer>
-                    </MonthContainer>
-                </div>
+                <MonthContainer key={month}>
+                    <MonthYearLabel style={labelColor}>
+                        {format(month, labelFormat || "MMMM yyyy", { locale: lang })}
+                    </MonthYearLabel>
+                    <ButtonToday>Today</ButtonToday>
+                    <DaysContainer style={i===0?firstSection:null}>
+                        {days}
+                    </DaysContainer>
+                </MonthContainer>
             );
             days = [];
         }
-        
-        return<DateListScrollable id={"container"}>
-                    {months}
-                </DateListScrollable>
+        return <DateListScrollable id={"container"}>{months}</DateListScrollable>;
     }
 
     const onDateClick = day => {
@@ -247,30 +228,15 @@ export default function Datepicker({beforeDate, endDate, selectDate, getSelected
             break;
     }
 
-    const classes = useStyles();
-    return (<div className={classes.root}>
-            <Grid container spacing={2} className={classes.containerPad}>
-                <Grid item sm container className={classes.dateContaniner}>
-                    <Grid item className={classes.date}>{new Date().getDate()}</Grid>
-                    <Grid item>
-                        <Grid>{format(new Date(), "E")}</Grid>
-                        <Grid>{format(new Date(), labelFormat)}</Grid>
-                    </Grid>
-                </Grid>
-                <Grid item>
-                    <ButtonToday onClick={() => onDateClick(new Date())}>Today</ButtonToday>
-                </Grid>
-            </Grid>            
-            <Container>
-                <ButtonWrapper>
-                    <Button style={buttonColor} onClick={prevWeek}>←</Button>
-                </ButtonWrapper>
-                {renderDays(langCode)}
-                <ButtonWrapper>
-                    <Button style={buttonColor} onClick={nextWeek}>→</Button>
-                </ButtonWrapper>
-            </Container>
-        </div>
-            
+    return (
+        <Container>
+            <ButtonWrapper>
+                <Button style={buttonColor} onClick={prevWeek}>←</Button>
+            </ButtonWrapper>
+            {renderDays(langCode)}
+            <ButtonWrapper>
+                <Button style={buttonColor} onClick={nextWeek}>→</Button>
+            </ButtonWrapper>
+        </Container>
     )
 }

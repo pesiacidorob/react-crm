@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     '& > h6': {
       margin: '4px'
     },
-    backgroundColor: '#f4fffc'
+    backgroundColor: '#84ffff'
   },
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,

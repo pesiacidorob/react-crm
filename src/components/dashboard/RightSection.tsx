@@ -12,12 +12,23 @@ const useStyles = makeStyles(() => ({
         height: '100%'
     }
 }));
+
+const selectedDay = (val) =>{
+    console.log(val)
+  };
   
 export default function RightSection(props){
     const classes = useStyles();
     return (
         <Paper className={classes.root}  elevation={3}>
-            <Datepicker />
+            <Datepicker
+                beforeDate={3} 
+                endDate={7} 
+                selectDate={""}
+                getSelectedDay={selectedDay} 
+                labelFormat={"MMMM yyyy"} 
+                color={"#374e8c"} 
+                language={"en"} />
             <PaperInfo data={props.data1} />            
             <FullWidthTabs data={props.data2} />
         </Paper>
