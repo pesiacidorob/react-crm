@@ -84,6 +84,7 @@ class MailInboxPage extends React.Component<
   render() {
     const { isFetching, emailCrm } = this.props;
     console.log(emailCrm)
+    console.log(isFetching)
     return (
       <PageBase title="Email Inbox" navigation="Application / Email Inbox ">
         {isFetching ? (
@@ -101,6 +102,7 @@ class MailInboxPage extends React.Component<
                 value={emailCrm.date}
                 // onChange={}
               />
+              <Grid>{emailCrm.date}</Grid>
             </Grid>
             <Grid item style={styles.cell} xs={12} md={4}>
               <TextField

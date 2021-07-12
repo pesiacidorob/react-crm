@@ -57,8 +57,7 @@ export function getData(action: string): Promise<TODO> {
       .then(res => {
         // emailData = res.data;
         // console.log('============== email get data ===========')
-        // console.log(emailData)
-        //
+        console.log(res.data)
         return {data: JSON.parse(JSON.stringify(res.data))}
       })
 

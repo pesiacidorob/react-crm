@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 import LoginPage from "./SignInPage";
 import styles from "../styles";
 import { User } from "../types";
-
 import { thunkAuth } from "../services/thunks";
 import { SIGN_IN, HttpMethod, SIGN_OUT } from "../store/types";
 import DashboardPage from "./DashboardPage";
@@ -26,6 +25,7 @@ import AboutPage from "./AboutPage";
 import NotFoundPage from "./NotFoundPage";
 import ChangePasswordPage from "./ChangePasswordPage";
 import MaileInboxPage from "./MailInboxPage";
+import Inbox from "../components/Inbox";
 
 const isSmallsWindowScreen = () => {
   return window.innerWidth <= 600;
@@ -196,6 +196,7 @@ class App extends React.Component<AppProps, AppState> {
                 <Route path={`/about`} component={AboutPage} />
                 <Route path="/changepass" component={ChangePasswordPage} />
                 <Route exact path={`/mails`} component={MaileInboxPage} />
+                <Route exact path={`/inbox`} component={Inbox} />
                 {/* <Route path="/404" component={NotFoundPage} />
                 <Redirect to="/404" /> */}
               </div>
