@@ -62,7 +62,14 @@ export interface Product extends Entity {
   avatar?: string;
 }
 
-export type ViewModel = Customer | Order | Product | Category  
+export interface EmailCRM extends Entity {
+  date: string;
+  from: string;
+  subject: string;
+  to: string;
+}
+
+export type ViewModel = Customer | Order | Product | Category  | EmailCRM
 
 // export type SearchFilter = {
 //   equals?: TODO;
@@ -184,4 +191,24 @@ export class ProductModel implements Product {
   unitPrice: number;
   category: Category;
 
+}
+
+export class EmailCRMModel implements EmailCRM {
+  constructor(
+    date: string,
+    from: string,
+    subject: string,
+    to: string
+  ) {
+    this.id = 0;
+    this.date = date;
+    this.from = from;
+    this.subject = subject;
+    this.to = to;
+  }
+  id: number;
+  date: string;
+  from: string;
+  subject: string;
+  to: string;
 }

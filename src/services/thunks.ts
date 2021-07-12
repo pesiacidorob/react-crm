@@ -36,6 +36,10 @@ import {
   CREATE_PRODUCT,
   NewAction,
   LIST_CATEGORY,
+  //-- emailCrm
+  GET_EMAILCRM,
+  LIST_EMAILCRM,
+  //--
   QActions,
   EDIT_PRODUCT,
   EDIT_ORDER,
@@ -47,6 +51,7 @@ import {
   Product,
   ProductModel,
   Order,
+  EmailCRM
 } from "../types";
 import {
   listOrder,
@@ -67,6 +72,10 @@ import {
   listCategory,
   editProduct,
 } from "../actions/product";
+import {
+  listEmailCRM,
+  getEmailCRM,
+} from "../actions/emailcrm";
 
 export const thunkAuth = (
   apiAction?: ApiAction
@@ -99,7 +108,7 @@ export const thunkApiCall = (
 ): ThunkAction<void, AppState, null, Action<string>> => async (dispatch) => {
   let response: TODO;
   const { type, endpoint, method, data, filters } = apiAction;
-  
+
   if (!isNewAction(type)) {
     response = await callApi(endpoint, method, data, filters);
   } else {
@@ -226,6 +235,15 @@ function dispatchReponse(dispatch, type, response) {
 
     case LIST_CATEGORY:
       dispatch(listCategory(response.data));
+      break;
+
+    //-----
+    case LIST_EMAILCRM:
+      dispatch(listEmailCRM(response.data));
+      break;
+
+    case GET_EMAILCRM:
+      dispatch(getEmailCRM(response.data));
       break;
   }
 }

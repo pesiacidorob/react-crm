@@ -40,7 +40,8 @@ export function orderReducer(
         updated: false,
       });
     case GET_ORDER:
-      
+
+      console.log(action.payload)
       return Object.assign({}, state, {
         isFetching: false,
         order: action.payload,
