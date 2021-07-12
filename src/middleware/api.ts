@@ -48,19 +48,14 @@ function parseRequest(req: string) {
 }
 
 export function getData(action: string): Promise<TODO> {
+    
   const { model, id, exp , filters} = parseRequest(action)
 
   if (model === 'emailcrms') {
-
-    // added 4/7 jeni
     return axios.get(`http://localhost:8080/getEmailCrm`)
       .then(res => {
-        // emailData = res.data;
-        // console.log('============== email get data ===========')
-        console.log(res.data)
         return {data: JSON.parse(JSON.stringify(res.data))}
       })
-
   } else {
     return new Promise(function (resolve, _reject) {
       const expandModel = exp
@@ -68,7 +63,6 @@ export function getData(action: string): Promise<TODO> {
           ? "categories"
           : exp + "s"
         : exp;
-
 
       let result: TODO;
       let expand: string, expandId: number;
@@ -114,7 +108,6 @@ export function getData(action: string): Promise<TODO> {
           )
         }
       }
-
       setTimeout(resolve, 300, { data: result });
     });
   }
@@ -176,9 +169,7 @@ export function callApi(endpoint, method: HttpMethod, data?: TODO, filters?: TOD
       return deleteData(endpoint)
     default:
       return null;
-
   }
-
 }
 
 export const CALL_API = Symbol("Call API")

@@ -26,7 +26,6 @@ const useStyles = () => {
         },
         breadcrumbsFont: {
             fontSize: '12px',
-            alignItems: 'center'
         },
         containerP: {
             padding: '20px 25px 0px 25px'
@@ -87,8 +86,6 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     if (emailCrmId) {
         action = getAction(GET_EMAILCRM, emailCrmId); //  Object.assign({}, this.getAction);
         this.props.getEmailCRM(action);
-        console.log(this.props)
-        console.log("cccccccccccc")
       };
     }
   
@@ -115,14 +112,11 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     render() {
         const classes = useStyles();
         const { isFetching, emailCrm } = this.props;
-        console.log(emailCrm)
-        console.log(this.props)
-        console.log("bbbbbbbbbbbbbbbbbbb")
-
+        
         return (
             <div style={{display: 'flex'}}>
                 <Paper elevation={3} style={classes.paper}>
-                    <Grid xs={12} container style={classes.containerP}>
+                    <Grid item container xs={12}  style={classes.containerP}>
                         <Grid xs={6} item container style={classes.breadcrumbsFont}>
                             <Grid item xs={'auto'}>{'New Mail'} - {'Sample Creative'}</Grid>
                             <DoubleArrow />
@@ -141,13 +135,13 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                             </Tooltip>
                         </Grid>
                     </Grid>
-                    <Grid xs={12} container style={classes.containerP} >
+                    <Grid item container xs={12} style={classes.containerP} >
                         <Grid item container xs={6}>
-                            <Grid item xs={2} alignItems='center'>
+                            <Grid item container xs={2}>
                                 <AccountCircle style={{fontSize: '40px'}}/>
                             </Grid>
                             <Grid item container xs={10}>
-                                <Grid item xs={12}>{'FROM'}{emailCrm.to['text']}</Grid>
+                                <Grid item xs={12}>{'FROM'}{"emailCrm.to['text']"}</Grid>
                                 <Grid item xs={12} style={{display: 'flex'}}>
                                     <Typography style={classes.font}>to me</Typography>
                                     <div style={classes.caret}></div>
@@ -181,8 +175,8 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid xs={12} style={classes.pad}>
-                        {emailCrm.text}{'aaa'}
+                    <Grid item xs={12} style={classes.pad}>
+                        {emailCrm.text}
                     </Grid>
                 </ Paper> 
             </div>

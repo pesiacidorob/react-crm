@@ -4,10 +4,8 @@ import App from "./pages/App";
 import SignInPage from "./pages/SignInPage";
 
 export const routes = (
-  <div>
     <Switch>
       <Route path="/" component={App} />
       <Route path="/login" component={SignInPage} />
     </Switch>
-  </div>
 );

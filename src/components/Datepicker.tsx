@@ -115,7 +115,6 @@ export default function Datepicker({beforeDate, endDate, selectDate, getSelected
         let days = [];
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
-            console.log(differenceInMonths(lastDate, startDate))
             const month = startOfMonth(addMonths(startDate, i));
             start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
             end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));

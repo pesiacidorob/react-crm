@@ -1,23 +1,17 @@
 import React from "react";
 import { match } from "react-router-dom";
-import PageBase from "../components/PageBase";
 import { connect } from "react-redux";
-import { getAction } from "../actions/emailcrm";
-
-import TextField from "@material-ui/core/TextField";
 import { Grid } from "@material-ui/core";
-
-import { thunkApiCall } from "../services/thunks";
+import TextField from "@material-ui/core/TextField";
 import { EmailCRM} from "../types";
-import {
-  ApiAction,
-  GET_EMAILCRM,
-} from "../store/types";
+import PageBase from "../components/PageBase";
 import SkeletonForm from "../components/SkeletonForm";
+import { getAction } from "../actions/emailcrm";
+import { thunkApiCall } from "../services/thunks";
 import { formPageStyles } from "../styles";
+import { ApiAction, GET_EMAILCRM } from "../store/types";
 
 const styles = formPageStyles;
-
 interface EmailCRMProps {
   match?: match;
   emailCrm: EmailCRM;
@@ -26,7 +20,6 @@ interface EmailCRMProps {
   isFetching: boolean;
   updated: boolean;
 }
-
 interface EmailCRMState {
   emailCrm: EmailCRM;
   snackbarOpen: boolean;
@@ -72,7 +65,6 @@ class MailInboxPage extends React.Component<
     ) {
       this.setState({ snackbarOpen: true });
     }
-
   }
 
   onSnackBarClose() {
@@ -83,8 +75,6 @@ class MailInboxPage extends React.Component<
 
   render() {
     const { isFetching, emailCrm } = this.props;
-    console.log(emailCrm)
-    console.log(isFetching)
     return (
       <PageBase title="Email Inbox" navigation="Application / Email Inbox ">
         {isFetching ? (

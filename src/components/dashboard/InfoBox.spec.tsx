@@ -20,7 +20,6 @@ describe("<InfoBox />", () => {
     expect (icon).to.a.instanceof(Object)
     
     const content = wrapper.find("div > span");
-// console.log(content)
     // expect(content).to.equal("")
     expect("Title").to.equal(content.at(0).text());
     expect("1500").to.equal(content.at(1).text());

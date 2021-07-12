@@ -166,7 +166,6 @@ class App extends React.Component<AppProps, AppState> {
 
     return (
       <MuiThemeProvider theme={themeDefault}>
-        <div>
           {isAuthenticated && (
             <div>
               <AppNavBar
@@ -204,7 +203,6 @@ class App extends React.Component<AppProps, AppState> {
           {!isAuthenticated && (
             <LoginPage onSignInClick={(creds) => this.signIn(creds)} />
           )}
-        </div>
       </MuiThemeProvider>
     );
   }

@@ -70,10 +70,10 @@ export default function LeadSidebar(props) {
       <CssBaseline />
       <Paper elevation={3} className={classes.paper}>
         <List className={classes.list}>
-        {[0, 1, 2, 3, 4].map((item) => (
-          <ListItem key={`item--${item}`}  className={classes.pad} >
-            <LeadCard data={props.data.information} />
-          </ListItem>
+          {[0, 1, 2, 3, 4].map((item) => (
+            <ListItem key={`item--${item}`}  className={classes.pad} >
+              <LeadCard data={props.data.information} />
+            </ListItem>
           ))}
         </List>
       </Paper>

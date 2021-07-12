@@ -1,13 +1,13 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import {Card, Grid} from "@material-ui/core";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
+import SendIcon from '@material-ui/icons/Send';
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import CardContent from "@material-ui/core/CardContent";
+import {Card, Grid} from "@material-ui/core";
+import AutorenewIcon from '@material-ui/icons/Autorenew';
+import { makeStyles } from '@material-ui/core/styles';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import SendIcon from '@material-ui/icons/Send';
-import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,9 +51,9 @@ export default function LeadCard(props) {
   return(
     <Card className={classes.root} elevation={3}>
       <div className={classes.ContentHead}>
-        <p className={classes.title} >
+        <div className={classes.title} >
           <Typography variant="subtitle2">Email Replied</Typography>
-        </p>
+        </div>
         <IconButton className={classes.iconbutton} >
           <DirectionsCarIcon/>
         </IconButton>
@@ -68,7 +68,7 @@ export default function LeadCard(props) {
         </IconButton>
       </div>
       <CardContent className={classes.card}>
-        <Grid container xs={12} md={12} >
+        <Grid item container xs={12} md={12} >
           {props.data.map((item) => (
             <Grid item xs={6} >
               <Typography className={classes.content} display="inline">{item.name}</Typography>

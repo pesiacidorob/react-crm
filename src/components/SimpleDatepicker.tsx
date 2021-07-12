@@ -38,7 +38,6 @@ const Container = styled.div`
     padding: 5px;
     box-sizing: border-box;
 `
-
 const DateListScrollable = styled.div`
     display: block;
     overflow-x: scroll;
@@ -52,7 +51,6 @@ const DateListScrollable = styled.div`
         display: none;
     }
 `
-
 const MonthContainer = styled.div`
     & span {
         display: flex;
@@ -74,16 +72,13 @@ const DaysContainer = styled.div`
     z-index: 1;
     justify-content: space-around;
 `
-
 const DayLabel = styled.div`
     font-size: 14px;
     margin: 4px 0 0 0;
 `
-
 const DateLabel = styled.div`
     font-size: 18px;
 `
-
 export default function SimpleDatepicker({beforeDate, endDate, selectDate, getSelectedDay, color, labelFormat, language}) {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const current = new Date();
@@ -112,17 +107,16 @@ export default function SimpleDatepicker({beforeDate, endDate, selectDate, getSe
         let days = [];
         for (let i = 0; i <= differenceInMonths(lastDate, startDate); i++) {
             let start, end;
-            console.log(differenceInMonths(lastDate, startDate))
             const month = startOfMonth(addMonths(startDate, i));
             start = i === 0 ? Number(format(startDate, dateFormat)) - 1 : 0;
             end = i === differenceInMonths(lastDate, startDate) ? Number(format(lastDate, "d")) : Number(format(lastDayOfMonth(month), "d"));
             for (let j = start; j < end; j++) {
                 days.push(
                     <DateDayItem id={`${getId(addDays(startDate, j))}`}
-                         style={getStyles(addDays(month, j))}
-                         key={addDays(month, j)}
-                         onClick={() => onDateClick(addDays(month, j))}
-                         >
+                        style={getStyles(addDays(month, j))}
+                        key={addDays(month, j)}
+                        onClick={() => onDateClick(addDays(month, j))}
+                    >
                         <DayLabel>
                             {format(addDays(month, j), dayFormat)}
                         </DayLabel>
@@ -132,20 +126,18 @@ export default function SimpleDatepicker({beforeDate, endDate, selectDate, getSe
                     </DateDayItem>
                 );
             }
-            months.push(
-                <div>
-                                       
-                    <MonthContainer key={month}>
-                         <DaysContainer > {/*style={i===0?firstSection:null} */}
-                            {days}
-                        </DaysContainer>
-                    </MonthContainer>
-                </div>
+
+            months.push(                                       
+                <MonthContainer key={month}>
+                    <DaysContainer > {/*style={i===0?firstSection:null} */}
+                        {days}
+                    </DaysContainer>
+                </MonthContainer>
             );
             days = [];
         }
         
-        return<DateListScrollable id={"container"}>
+        return  <DateListScrollable id={"container"}>
                     {months}
                 </DateListScrollable>
     }
@@ -200,7 +192,6 @@ export default function SimpleDatepicker({beforeDate, endDate, selectDate, getSe
             <Container>
                 {renderDays(langCode)}
             </Container>
-        </div>
-            
+        </div>            
     )
 }

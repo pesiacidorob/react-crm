@@ -11,7 +11,6 @@ const SearchFilterOps = {
   endsWith: "_endsWith"
 };
 
-
 const SESSION_TOKEN_KEY = "vue-crm-token";
 const SESSION_USER_KEY = "vue-crm-user";
 
@@ -70,7 +69,6 @@ export function clearSearchFilters(searchFilter: SearchFilter) {
   }
 }
 
-
 export function buildSearchFilters(searchFilter: SearchFilter) {
     const filters = [];
   if (searchFilter) {
@@ -98,6 +96,7 @@ export function buildJsonServerQuery (filters: TODO){ // (searchVm: TODO) {
   let filterQuery = "";
   if (filters && filters.length > 0) {
     filterQuery = filters.reduce((prev: '', f: TODO) => {
+      // eslint-disable-next-line no-sequences
       if (f.val && f.val !== "", f.val !== null && f.val !== undefined) {
         let qString = ''
         qString += f.property;
@@ -109,10 +108,8 @@ export function buildJsonServerQuery (filters: TODO){ // (searchVm: TODO) {
       return prev
     }, '');
   }
-//   debugger
   return filterQuery;
 }
-
 
 const filterFn = (op: string, value: TODO) => (prop: string,  data:TODO) => {
   let propName =  ""
@@ -143,7 +140,6 @@ const filterFn = (op: string, value: TODO) => (prop: string,  data:TODO) => {
       return parseFloat(data[propName] )<= parseFloat(value)
   }
 }
-
 
 export function getSeachFilters(parsedQs: { [key: string]: TODO }) {
   // Search Query will look like follows

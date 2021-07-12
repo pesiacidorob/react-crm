@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid } from '@material-ui/core';
 import Data from "../data";
-
-import LeadsSidebar from '../components/dashboard/leadsSidebar'
-import SearchTask from '../components/dashboard/searchTask'
-import RightSection from '../components/dashboard/RightSection'
 import Inbox from '../components/Inbox';
+import SearchTask from '../components/dashboard/searchTask'
+import LeadsSidebar from '../components/dashboard/leadsSidebar'
+import RightSection from '../components/dashboard/RightSection'
 
 const styles = {
   navigation: {

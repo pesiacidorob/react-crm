@@ -44,7 +44,7 @@ export default function PaperInfo(props){
     const classes = useStyles();
     return (
         <Paper className={classes.mg} elevation={3}>
-            <Grid container xs={12} md={12} className={classes.topPad}>
+            <Grid item container xs={12} className={classes.topPad}>
                 {props.data.map((item) => (
                     <Grid item xs={6} className={classes.typoPad}>
                         <ThemeProvider theme={theme}>
@@ -54,7 +54,7 @@ export default function PaperInfo(props){
                     </Grid>
                 ))} 
             </Grid>
-            <Grid className={classes.align}>
+            <Grid item className={classes.align}>
                 <GlobalCss/>
                 <IconButton aria-label="AddCircleOutline" className={classes.iconPad}>
                     <AddCircleOutlineIcon />

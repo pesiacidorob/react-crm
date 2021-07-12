@@ -9,7 +9,7 @@ import {EmailCRM, EmailCRMModel} from "../types";
 export function emailcrmReducer(
   state: EmailCRMState = {
     isFetching: true,
-    emailCrm: new EmailCRMModel("","","","") as EmailCRM, // {} as Order,
+    emailCrm: new EmailCRMModel("","","","") as EmailCRM, 
     emailCrmList: [],
     deleted: false,
     updated: false,

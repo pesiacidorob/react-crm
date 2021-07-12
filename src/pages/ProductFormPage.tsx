@@ -1,21 +1,21 @@
 import React from "react";
 import { Link, match } from "react-router-dom";
+import Card from "@material-ui/core/Card";
+import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
 import Divider from "@material-ui/core/Divider";
+import SaveIcon from "@material-ui/icons/Save";
+import Snackbar from "@material-ui/core/Snackbar";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { LinearProgress, Grid, MenuItem } from "@material-ui/core";
 import PageBase from "../components/PageBase";
 import { connect } from "react-redux";
-import Card from "@material-ui/core/Card";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import SkeletonForm from "../components/SkeletonForm";
 import { getAction } from "../actions/product";
-
-import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
-
-import { thunkApiCall, thunkApiQCall } from "../services/thunks";
 import { Product,  Category } from "../types";
-import { LinearProgress, Grid, MenuItem } from "@material-ui/core";
-import Snackbar from "@material-ui/core/Snackbar";
+import { Formik, Form, Field } from "formik";
+import { thunkApiCall, thunkApiQCall } from "../services/thunks";
 import {
   ApiAction,
   UPDATE_PRODUCT,
@@ -23,12 +23,9 @@ import {
   EDIT_PRODUCT,
   QActions,
 } from "../store/types";
-import Alert from "@material-ui/lab/Alert";
-import SkeletonForm from "../components/SkeletonForm";
 import { formPageStyles } from "../styles";
 
 const styles = formPageStyles;
-
 interface ProductFormProps {
   match: match;
   product: Product;
@@ -40,13 +37,11 @@ interface ProductFormProps {
   deleted: boolean;
   updated: boolean;
 }
-
 interface ProductFormState {
   product: Product;
   snackbarOpen: boolean;
   autoHideDuration: number;
 }
-
 class ProductFormPage extends React.Component<
   ProductFormProps,
   ProductFormState
@@ -119,7 +114,6 @@ class ProductFormPage extends React.Component<
               if (!values.categoryId) {
                 errors.categoryId = "Required";
               }
-
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
@@ -164,7 +158,6 @@ class ProductFormPage extends React.Component<
                       required
                     />
                   </Grid>
-
                   <Grid item style={styles.cell} xs={12} md={4}>
                     <Field
                       variant="outlined"
@@ -189,11 +182,10 @@ class ProductFormPage extends React.Component<
                       required
                     />
                   </Grid>
-
                   <Grid item style={styles.cell} xs={12} md={4}>
                     {product && product.avatar && (
                       <Card style={styles.card}>
-                        <img width={100} src={product.avatar} />
+                        <img width={100} src={product.avatar} alt={'avatar'}/>
                       </Card>
                     )}
                   </Grid>
@@ -202,7 +194,6 @@ class ProductFormPage extends React.Component<
                 <Divider />
                 {isSubmitting && <LinearProgress />}
                 <br />
-
                 <div style={styles.buttons}>
                   <Link to="/products">
                     <Button variant="contained">

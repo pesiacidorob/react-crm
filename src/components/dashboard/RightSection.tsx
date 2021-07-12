@@ -1,9 +1,9 @@
-import { makeStyles } from '@material-ui/core/styles';
 import React from "react";
-import Datepicker from "../Datepicker";
 import Paper from "@material-ui/core/Paper";
-import FullWidthTabs from "../FullWidthTabs";
+import { makeStyles } from '@material-ui/core/styles';
 import PaperInfo from '../PaperInfo';
+import Datepicker from "../Datepicker";
+import FullWidthTabs from "../FullWidthTabs";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -29,10 +29,10 @@ export default function RightSection(props){
                 getSelectedDay={selectedDay} 
                 labelFormat={"MMMM yyyy E"} 
                 color={"#374e8c"} 
-                language={"en"} />
+                language={"en"}
+            />
             <PaperInfo data={props.data.information} />            
             <FullWidthTabs data={props.data.appointment} />
         </Paper>        
     );
-
 };

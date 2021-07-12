@@ -20,8 +20,7 @@ export function orderReducer(
     updated: false,
   },
   action: OrderActionTypes
-) {
-  // 
+) { 
   switch (action.type) {
     case LIST_ORDER:
       return Object.assign({}, state, {
@@ -31,6 +30,7 @@ export function orderReducer(
         deleted: false,
         updated: false,
       });
+
     case NEW_ORDER:
       return Object.assign({}, state, {
         isFetching: false,
@@ -39,9 +39,8 @@ export function orderReducer(
         deleted: false,
         updated: false,
       });
-    case GET_ORDER:
 
-      console.log(action.payload)
+    case GET_ORDER:
       return Object.assign({}, state, {
         isFetching: false,
         order: action.payload,
@@ -49,8 +48,8 @@ export function orderReducer(
         deleted: false,
         updated: false,
       });
-    case EDIT_ORDER:
-      
+
+    case EDIT_ORDER:      
       const { order, productList, categoryList } = action.payload;
       return Object.assign({}, state, {
         isFetching: false,
@@ -71,6 +70,7 @@ export function orderReducer(
         deleted: false,
         updated: true,
       });
+      
     case DELETE_ORDER:
       return Object.assign({}, state, {
         isFetching: false,

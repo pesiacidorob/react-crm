@@ -1,23 +1,22 @@
 import React from "react";
 import Fab from "@material-ui/core/Fab";
-import ContentAdd from "@material-ui/icons/Add";
 import Search from "@material-ui/icons/Search";
+import Button from "@material-ui/core/Button";
+import Drawer from "@material-ui/core/Drawer";
+import Snackbar from "@material-ui/core/Snackbar";
+import TextField from "@material-ui/core/TextField";
+import ContentAdd from "@material-ui/icons/Add";
+import { Grid, Tooltip, Divider } from "@material-ui/core";
 import PageBase from "../components/PageBase";
 import { connect } from "react-redux";
 import { getAction } from "../actions/customer";
-import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Snackbar from "@material-ui/core/Snackbar";
 import { thunkApiCall } from "../services/thunks";
 import { LIST_CUSTOMER, DELETE_CUSTOMER, NEW_CUSTOMER } from "../store/types";
 import { Customer, SearchFilter } from "../types";
-
 import Alert from "../components/Alert";
 import DataTable from "../components/DataTable";
 import SkeletonList from "../components/SkeletonList";
 import DeleteDialog from "../components/DeleteDialog";
-import { Grid, Tooltip, Divider } from "@material-ui/core";
 import { listPageStyle } from "../styles";
 import {
   buildSearchFilters,
@@ -61,7 +60,6 @@ type CustomerListProps = {
   errorMessage: string;
   deleted: boolean;
 } & DefaultProps;
-
 interface CustomerListState {
   open: boolean;
   isFetching: boolean;
@@ -217,8 +215,6 @@ class CustomerListPage extends React.Component<
   render() {
     const { customerList, headers, dataKeys, model } = this.props;
     const { isFetching, page, totalPages, items } = this.state;
-
-    console.log(headers);
 
     return (
       <PageBase

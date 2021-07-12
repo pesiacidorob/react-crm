@@ -1,22 +1,21 @@
 import React from "react";
+import Fab from "@material-ui/core/Fab";
 import Table from "@material-ui/core/Table";
+import Cancel from "@material-ui/icons/Cancel";
+import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import Pagination from "@material-ui/lab/Pagination";
-import TableRow from "@material-ui/core/TableRow";
-import Fab from "@material-ui/core/Fab";
-import ContentCreate from "@material-ui/icons/Create";
-import ActionDelete from "@material-ui/icons/Delete";
 import CheckCircle from "@material-ui/icons/CheckCircle";
-import Cancel from "@material-ui/icons/Cancel";
-import { pink, grey, green, common } from "@material-ui/core/colors";
+import ActionDelete from "@material-ui/icons/Delete";
+import ContentCreate from "@material-ui/icons/Create";
 import { Container, Tooltip } from "@material-ui/core";
+import { grey, green, common } from "@material-ui/core/colors";
 
 const grey500 = grey["500"];
 const green400 = green["400"];
 const white = common.white;
-
 const styles = {
   searchButton: {
     marginRight: 20,
@@ -60,7 +59,6 @@ interface DataTableProps {
   onDelete: (_event: React.ChangeEvent<unknown>, id?: number) => void;
 }
 
-
 function DataTable<DataTableProps>({
   model,
   items,
@@ -74,7 +72,7 @@ function DataTable<DataTableProps>({
   // =>
   const renderData = (dataKey: string, data: TODO) => {
     if (dataKey === "avatar") {
-      return <img width={35} src={data[dataKey]} />;
+      return <img width={35} src={data[dataKey]} alt={'datakey'}/>;
     } else if (dataKey === "membership") {
       return data[dataKey] ? <CheckCircle /> : <Cancel />;
     } else if (dataKey === "actions") {
@@ -106,12 +104,10 @@ function DataTable<DataTableProps>({
     } else {
       if (dataKey.includes(".")) {
         const keys = dataKey.split(".");
-
         return <>{data[keys[0]][keys[1]]}</>;
       } else return <>{data[dataKey]}</>;
     }
   };
-
   const headerCount = headers.length;
 
   return (
@@ -156,7 +152,6 @@ function DataTable<DataTableProps>({
           )}
         </TableBody>
       </Table>
-
       {items.length > 0 && (
         <Container style={styles.pagination}>
           <Pagination

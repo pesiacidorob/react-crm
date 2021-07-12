@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
-import { Typography, ListItemIcon } from "@material-ui/core";
-
 import { blue } from "@material-ui/core/colors";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { Typography, ListItemIcon } from "@material-ui/core";
 import data from "../data";
 
 const blue600 = blue["800"];
-
 const useStyles = makeStyles(() =>
   createStyles({
     menuItem: {

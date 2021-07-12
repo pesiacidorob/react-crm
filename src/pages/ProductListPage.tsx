@@ -60,7 +60,6 @@ interface ProductListState {
     }
   };
 }
-
 class ProductListPage extends React.Component<ProductListProps, ProductListState> {
   constructor(props) {
     super(props);
@@ -109,8 +108,7 @@ class ProductListPage extends React.Component<ProductListProps, ProductListState
       const items = this.props.productList.slice(0, 10);
       const isFetching = this.props.isFetching;
       this.setState({ page, totalPages, items, isFetching });
-    }
-    
+    }    
 
     if (this.props.deleted !== prevProps.deleted && this.props.deleted === true) {
       this.setState({ snackbarOpen: true });
@@ -138,21 +136,16 @@ class ProductListPage extends React.Component<ProductListProps, ProductListState
   handleSearch() {
     // const action = getAction(LIST_PRODUCT, null, null, '') as ApiAction;
     // this.props.searchProduct(action); //this.state.search);
-
-
     const filters = buildSearchFilters(this.state.search as SearchFilter);
     const query = buildJsonServerQuery(filters);
     // const action = getAction(LIST_CUSTOMER, null, null, query);
     const action = getAction(LIST_PRODUCT, null, null, query) as ApiAction;
     this.props.searchProduct(action); //this.state.search);
     this.setState({ searchOpen: false, isFetching: true });
-
-
   }
 
   closeDialog(isConfirmed) {
     this.setState({ open: false });
-
     if (isConfirmed && this.state.productId) {
       const action = getAction(DELETE_PRODUCT, this.state.productId, null, '')as ApiAction
       this.props.deleteProduct(action);
@@ -168,7 +161,6 @@ class ProductListPage extends React.Component<ProductListProps, ProductListState
 
   handleNewProduct() {
     this.props.fetchingProduct();
-
     const action = getAction(NEW_PRODUCT) as QActions;
     this.props.newProduct(action);
     // @ts-ignore
@@ -224,9 +216,7 @@ class ProductListPage extends React.Component<ProductListProps, ProductListState
               onDelete={this.openDialog}
               onPageChange={this.onPageChange}
             />
-
             <DeleteDialog open={this.state.open} closeDialog={this.closeDialog} />
-
             <Drawer anchor="right" open={this.state.searchOpen} onClose={this.handleToggle}>
               <Grid container style={styles.searchDrawer} spacing={1}>
                 <Grid item xs={12} style={styles.searchField}>
@@ -266,7 +256,7 @@ function mapStateToProps(state) {
     productList,
     isFetching,
     errorMessage,
-  deleted,
+    deleted,
     user,
   };
 }
