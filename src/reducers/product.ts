@@ -22,7 +22,6 @@ export function productReducer(
   },
   action: ProductActionTypes
 ) {
-  console.log(action)
   switch (action.type) {
     case FETCHING_PRODUCT:
       return Object.assign({}, state, {

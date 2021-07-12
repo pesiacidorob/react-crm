@@ -17,7 +17,7 @@ const useStyles = () => {
         },
         paper: {
             width: '100%',
-            minHeight: 670,
+            minHeight: 705,
             margin: 0,
             height: 'auto'
         },
@@ -47,6 +47,9 @@ const useStyles = () => {
         font: {
             fontSize: '12px',
             lineHeight: 'o.5'
+        },
+        pad: {
+            padding: '20px'
         }
     }
 }
@@ -178,7 +181,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid xs={12}>
+                    <Grid xs={12} style={classes.pad}>
                         {emailCrm.text}{'aaa'}
                     </Grid>
                 </ Paper> 

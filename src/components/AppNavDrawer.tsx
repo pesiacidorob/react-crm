@@ -1,25 +1,20 @@
 import React from "react";
+import clsx from 'clsx'
 import Drawer from "@material-ui/core/Drawer";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { blue, common } from "@material-ui/core/colors";
-import AppUserMenu from "./AppUserMenu";
 import AppDrawerMenu from "./AppDrawerMenu";
 
 const blue600 = blue["900"];
 const drawerWidth = 250;
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
     },
-    drawerPaper: {
-      width: drawerWidth,
-      backgroundColor: "rgba(227, 231, 232, 1)",
-      overflow: "auto",
-    },
     user: {
-      fontSize: 22,
+      fontSize: 15,
       color: common.white,
     },
     menuItem: {
@@ -28,6 +23,25 @@ const useStyles = makeStyles(() =>
       paddingTop: "0.2em",
       paddingBottom: "0.2em",
       fontSize: 16,
+    },
+    drawerOpen: {
+      width: drawerWidth,
+      backgroundColor: "rgba(227, 231, 232, 1)",
+      overflow: "auto",
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    drawerClose: {
+      backgroundColor: "rgba(227, 231, 232, 1)",
+      overflow: "auto",
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      overflowX: 'hidden',
+      width: 60,
     },
   })
 );
@@ -46,11 +60,8 @@ interface Props {
 export default function AppNavDrawer(props: Props) {
   const styles = useStyles();
   const {
-    username,
     navDrawerOpen,
     isSmallScreem,
-    onSignoutClick,
-    onChangePassClick,
     handleDrawerToggle,
     drawerStyle,
   } = props;
@@ -59,8 +70,7 @@ export default function AppNavDrawer(props: Props) {
 
   const drawer = (
     <>
-      <AppUserMenu username={username} onSignoutClick={onSignoutClick} 
-      onChangePassClick={onChangePassClick} />
+      {/* <AppUserMenu username={username} onSignoutClick={onSignoutClick}   onChangePassClick={onChangePassClick} /> */}
       <AppDrawerMenu />
     </>
   );
@@ -73,10 +83,17 @@ export default function AppNavDrawer(props: Props) {
           <Drawer
             variant="persistent"
             anchor="left"
-            open={navDrawerOpen}
+            open={true}
             onClose={handleDrawerToggle}
+            className={clsx(drawerStyle, {
+              [styles.drawerOpen]: !navDrawerOpen,
+              [styles.drawerClose]: navDrawerOpen,
+            })}
             classes={{
-              paper: styles.drawerPaper,
+              paper: clsx({
+                [styles.drawerOpen]: !navDrawerOpen,
+                [styles.drawerClose]: navDrawerOpen,
+              }),
             }}
             ModalProps={{
               keepMounted: true, // Better open performance on mobile.
@@ -86,12 +103,19 @@ export default function AppNavDrawer(props: Props) {
           </Drawer>
         ) : (
           <Drawer
+            className={clsx(drawerStyle, {
+              [styles.drawerOpen]: !navDrawerOpen,
+              [styles.drawerClose]: navDrawerOpen,
+            })}
             classes={{
-              paper: styles.drawerPaper,
+              paper: clsx({
+                [styles.drawerOpen]: !navDrawerOpen,
+                [styles.drawerClose]: navDrawerOpen,
+              }),
             }}
             variant="temporary"
             onClose={handleDrawerToggle}
-            open={navDrawerOpen}
+            // open={navDrawerOpen}
           >
             {drawer}
           </Drawer>
