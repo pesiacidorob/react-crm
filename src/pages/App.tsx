@@ -1,8 +1,13 @@
 import * as React from "react";
 import "../styles.scss";
 // import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+<<<<<<< HEAD
 import { ThemeProvider as MuiThemeProvider, } from "@material-ui/core/styles";
 import { Route } from "react-router-dom";
+=======
+import { ThemeProvider as MuiThemeProvider, createStyles, makeStyles, useTheme, Theme } from "@material-ui/core/styles";
+import { Route, Redirect } from "react-router-dom";
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 import AppNavBar from "../components/AppNavBar";
 import AppNavDrawer from "../components/AppNavDrawer";
 import { WithWidth } from "@material-ui/core/withWidth";
@@ -25,7 +30,11 @@ import ProductListPage from "./ProductListPage";
 import AboutPage from "./AboutPage";
 // import NotFoundPage from "./NotFoundPage";
 import ChangePasswordPage from "./ChangePasswordPage";
+<<<<<<< HEAD
 import MailInboxPage from "./MailInboxPage";
+=======
+import MaileInboxPage from "./MaileInboxPage";
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 
 const isSmallsWindowScreen = () => {
   return window.innerWidth <= 600;
@@ -38,7 +47,11 @@ const useStyles = (navDrawerOpen: boolean, isSmallScreen: boolean) => {
       position: "fixed",
       top: 0,
       overflow: "hidden",
+<<<<<<< HEAD
       maxHeight: 48,
+=======
+      maxHeight: 45,
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
       minHeight: 0,
     // width:100,
       //   navDrawerOpen && !isSmallScreen
@@ -165,6 +178,7 @@ class App extends React.Component<AppProps, AppState> {
     const showDashboard = pathname === "/" || pathname.endsWith("dashboard");
 
     return (
+<<<<<<< HEAD
       <MuiThemeProvider theme={themeDefault}>
           {isAuthenticated && (
             <div>
@@ -204,6 +218,11 @@ class App extends React.Component<AppProps, AppState> {
             <LoginPage onSignInClick={(creds) => this.signIn(creds)} />
           )}
       </MuiThemeProvider>
+=======
+      <div>
+        <DashboardPage />
+      </div>
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
     );
   }
 }

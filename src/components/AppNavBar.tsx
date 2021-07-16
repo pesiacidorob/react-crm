@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color:"red",
+<<<<<<< HEAD
     display:"inline",
     fontWeight:"bold",
   },
@@ -19,6 +20,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     borderRadius: 0,
     marginLeft:"-23px",
+=======
+    height:'45px',
+  },
+  toolbar: {
+    minHeight: 0,
+    height:45,
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
   },
 }));
 
@@ -28,6 +36,20 @@ interface AppNavBarProps {
 }
 // class Header extends React.Component {
 const AppNavBar: React.FC<AppNavBarProps> = ({ styles, handleDrawerToggle}) => {
+<<<<<<< HEAD
+=======
+const handleClick = () => {
+    // window.open(
+    //   "https://github.com/harryho/react-crm",
+    //   undefined,
+    //   undefined,
+    //   false
+    // );
+  };
+
+  let style = useStyles(styles);
+
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
   
   let style = useStyles(styles);
 
@@ -46,9 +68,12 @@ const AppNavBar: React.FC<AppNavBarProps> = ({ styles, handleDrawerToggle}) => {
               S
             </Typography>
           </IconButton>
+<<<<<<< HEAD
           <Typography variant="h4" style={{paddingLeft:"5px"}} >
             Drive
           </Typography>
+=======
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
         </Toolbar>
       </AppBar>
     </div>

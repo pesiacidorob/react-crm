@@ -18,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
     '& > h6': {
       margin: '4px'
     },
+<<<<<<< HEAD
     backgroundColor: '#f4fffc'
+=======
+    backgroundColor: '#84ffff'
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
   },
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
@@ -42,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 }));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 const GlobalCss = withStyles({
   '@global': {
     '.MuiTimelineOppositeContent-root': {
@@ -61,7 +68,10 @@ const AvatarContainer = styled.div`
     margin: 4px;
   }
 `;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 const AvatarLabel = styled.div`
   display: flex;
   align-items: center;

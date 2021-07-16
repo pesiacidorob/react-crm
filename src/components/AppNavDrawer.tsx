@@ -83,7 +83,11 @@ export default function AppNavDrawer(props: Props) {
           <Drawer
             variant="persistent"
             anchor="left"
+<<<<<<< HEAD
             open={true}
+=======
+            open={!navDrawerOpen}
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
             onClose={handleDrawerToggle}
             className={clsx(drawerStyle, {
               [styles.drawerOpen]: !navDrawerOpen,

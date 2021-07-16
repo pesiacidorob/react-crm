@@ -14,6 +14,10 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import CameraRearIcon from '@material-ui/icons/CameraRear';
 import CustomizedTimeline from './CustomizedTimeline';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -65,12 +69,18 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'auto'
   },    
 }));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 const style = { 
     minWidth: 'auto',
     fontSize: '12px'
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 const GlobalCss = withStyles({ 
     '@global': {
         '.MuiBox-root': {
@@ -85,6 +95,11 @@ const GlobalCss = withStyles({
     }
 })(() => null);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 291d56eba4316045d6fcc578e3f90dfccc592058
 export default function FullWidthTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
