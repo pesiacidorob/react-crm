@@ -20,7 +20,6 @@ const styles = {
 };
 
 const DashboardPage = () => {
-  console.log();
   const tempData = [];
   return (
     <>

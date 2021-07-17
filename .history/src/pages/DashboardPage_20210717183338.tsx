@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from '@material-ui/core';
 import Data from "../data";
-import Inbox from '../components/Inbox';
+import { Inbox } from '../components/Inbox';
 import SearchTask from '../components/dashboard/searchTask'
 import LeadsSidebar from '../components/dashboard/leadsSidebar'
 import RightSection from '../components/dashboard/RightSection'
@@ -34,7 +34,7 @@ const DashboardPage = () => {
           </Grid>
           <Grid item container style={{height: `calc(100% - 50px * 2)`}} >
             <Grid item style={ styles.cell } xs={12} md={8}>
-              <Inbox emailCrmList={tempData} />
+              <Inbox />
             </Grid>
             <Grid item style={styles.cell} xs={12} md={4} >
               <RightSection data={Data.dashBoardPage.rightSection} />

@@ -306,7 +306,7 @@ export const GET_EMAILCRM = "GET_EMAILCRM";
 export interface EmailCRMState {
   isFetching: boolean;
   emailCrm: EmailCRM;
-  emailCrmList: EmailCRM[];
+  emailCrmList: [];
   error?: null;
   deleted?: boolean;
   updated?: boolean;

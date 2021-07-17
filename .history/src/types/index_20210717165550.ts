@@ -70,7 +70,7 @@ export interface EmailCRM extends Entity {
   to: string;
 }
 
-export interface EmailCRMList extends Entity {
+export interface EmailCRMList extends EmailCRM {
   emailCrmList: EmailCRM[];
 }
 

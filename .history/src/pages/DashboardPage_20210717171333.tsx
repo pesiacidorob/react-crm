@@ -20,8 +20,7 @@ const styles = {
 };
 
 const DashboardPage = () => {
-  console.log();
-  const tempData = [];
+  const tempData = { }
   return (
     <>
       <Grid container >

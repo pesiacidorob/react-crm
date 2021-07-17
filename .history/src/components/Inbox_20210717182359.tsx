@@ -78,7 +78,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
   
     state = {
       emailCrm: {} as EmailCRM,
-      emailCrmList: [] as EmailCRM[],
+      emailCrmList: [],
       snackbarOpen: false,
       autoHideDuration: 2000,
     };  
@@ -121,7 +121,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         return (
             <div style={{display: 'flex'}}>
                 <Paper elevation={3} style={classes.paper}>
-                    {/* { emailList.length>0 && emailList.map((email, index) => 
+                    { emailList.length>0 && emailList.map((email, index) => 
                         (<Grid item container xs={12} style={classes.containerP} >
                             <Grid item xs={2}>
                             </Grid>
@@ -135,7 +135,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                                 {email.date}
                             </Grid>
                         </Grid> ))
-                    }                  */}
+                    }                 
                 </ Paper> 
             </div>
         );

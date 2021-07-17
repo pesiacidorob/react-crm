@@ -20,7 +20,7 @@ const styles = {
 };
 
 const DashboardPage = () => {
-  console.log();
+  console.log(this.props)
   const tempData = [];
   return (
     <>

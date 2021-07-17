@@ -54,7 +54,7 @@ const useStyles = () => {
 }
 interface EmailCRMProps {
     match?: match;
-    emailCrm: EmailCRM;
+    // emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
     getEmailCRM: typeof thunkApiCall;
     errorMessage?: string;
@@ -63,7 +63,7 @@ interface EmailCRMProps {
 }  
 
 interface EmailCRMState {
-    emailCrm: EmailCRM;
+    // emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
     snackbarOpen: boolean;
     autoHideDuration: number;
@@ -77,8 +77,8 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     }
   
     state = {
-      emailCrm: {} as EmailCRM,
-      emailCrmList: [] as EmailCRM[],
+    //   emailCrm: {} as EmailCRM,
+      emailCrmList: [],
       snackbarOpen: false,
       autoHideDuration: 2000,
     };  
@@ -87,6 +87,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     //   @ts-ignore
     const emailCrmId = 1;
     let action: ApiAction;
+    console.log('aaaaaaaaaaa')
     if (emailCrmId) {
         action = getAction(LIST_EMAILCRM, emailCrmId); //  Object.assign({}, this.getAction);
         this.props.getEmailCRM(action);
@@ -115,13 +116,14 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { isFetching, emailCrm, emailCrmList } = this.props;
+        const { isFetching, emailCrmList } = this.props;
+        const emailList = this.props.emailCrmList;
         console.log(this.props);
         
         return (
             <div style={{display: 'flex'}}>
                 <Paper elevation={3} style={classes.paper}>
-                    {/* { emailList.length>0 && emailList.map((email, index) => 
+                    { emailList.length>0 && emailList.map((email, index) => 
                         (<Grid item container xs={12} style={classes.containerP} >
                             <Grid item xs={2}>
                             </Grid>
@@ -135,7 +137,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                                 {email.date}
                             </Grid>
                         </Grid> ))
-                    }                  */}
+                    }                 
                 </ Paper> 
             </div>
         );

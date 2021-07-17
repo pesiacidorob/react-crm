@@ -86,9 +86,9 @@ class App extends React.Component<AppProps, AppState> {
     };
     this.signOut = this.signOut.bind(this);
     this.changePass = this.changePass.bind(this);
+    console.log(this.props);
   }
-  
-  
+
   signInAction = {
     type: SIGN_IN,
     endpoint: "login/",
@@ -164,9 +164,6 @@ class App extends React.Component<AppProps, AppState> {
     // @ts-ignore
     const pathname = this.props.location.pathname;
     const showDashboard = pathname === "/" || pathname.endsWith("dashboard");
-
-    console.log(this.props);
-    console.log(this.state);
 
     return (
       <MuiThemeProvider theme={themeDefault}>

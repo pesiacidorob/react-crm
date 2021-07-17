@@ -5,6 +5,7 @@ import Inbox from '../components/Inbox';
 import SearchTask from '../components/dashboard/searchTask'
 import LeadsSidebar from '../components/dashboard/leadsSidebar'
 import RightSection from '../components/dashboard/RightSection'
+import { EmailCRM} from "../types";
 
 const styles = {
   navigation: {
@@ -20,7 +21,6 @@ const styles = {
 };
 
 const DashboardPage = () => {
-  console.log();
   const tempData = [];
   return (
     <>

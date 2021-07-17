@@ -63,15 +63,10 @@ export interface Product extends Entity {
 }
 
 export interface EmailCRM extends Entity {
-  id: number;
   date: string;
   from: string;
   subject: string;
   to: string;
-}
-
-export interface EmailCRMList extends Entity {
-  emailCrmList: EmailCRM[];
 }
 
 export type ViewModel = Customer | Order | Product | Category  | EmailCRM
@@ -200,13 +195,12 @@ export class ProductModel implements Product {
 
 export class EmailCRMModel implements EmailCRM {
   constructor(
-    id: number,
     date: string,
     from: string,
     subject: string,
     to: string
   ) {
-    this.id = -1;
+    this.id = 0;
     this.date = date;
     this.from = from;
     this.subject = subject;

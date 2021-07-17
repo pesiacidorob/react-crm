@@ -61,10 +61,8 @@ interface EmailCRMProps {
     isFetching: boolean;
     updated: boolean;
 }  
-
 interface EmailCRMState {
     emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
     snackbarOpen: boolean;
     autoHideDuration: number;
   } 
@@ -78,7 +76,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
   
     state = {
       emailCrm: {} as EmailCRM,
-      emailCrmList: [] as EmailCRM[],
+      emailCrmList: [],
       snackbarOpen: false,
       autoHideDuration: 2000,
     };  
@@ -115,13 +113,13 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { isFetching, emailCrm, emailCrmList } = this.props;
-        console.log(this.props);
+        const { isFetching, emailCrmList } = this.props;
+        const emailList = this.props.emailCrmList;
         
         return (
             <div style={{display: 'flex'}}>
                 <Paper elevation={3} style={classes.paper}>
-                    {/* { emailList.length>0 && emailList.map((email, index) => 
+                    { emailList.length>0 && emailList.map((email, index) => 
                         (<Grid item container xs={12} style={classes.containerP} >
                             <Grid item xs={2}>
                             </Grid>
@@ -135,7 +133,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                                 {email.date}
                             </Grid>
                         </Grid> ))
-                    }                  */}
+                    }                 
                 </ Paper> 
             </div>
         );

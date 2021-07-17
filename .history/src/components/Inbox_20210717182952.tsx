@@ -115,7 +115,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { isFetching, emailCrm, emailCrmList } = this.props;
+        const { isFetching, emailCrm, emailCrmLis } = this.props;
         console.log(this.props);
         
         return (

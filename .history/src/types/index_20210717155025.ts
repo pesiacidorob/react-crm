@@ -70,10 +70,6 @@ export interface EmailCRM extends Entity {
   to: string;
 }
 
-export interface EmailCRMList extends Entity {
-  emailCrmList: EmailCRM[];
-}
-
 export type ViewModel = Customer | Order | Product | Category  | EmailCRM
 
 // export type SearchFilter = {
